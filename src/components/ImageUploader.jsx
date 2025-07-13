@@ -175,7 +175,7 @@ const ImageUploader = () => {
       animate="visible"
       variants={containerVariants}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Enhanced Header */}
         <motion.div
           className="text-center mb-12"
@@ -211,16 +211,16 @@ const ImageUploader = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid xl:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-12">
           {/* Upload Section */}
           <motion.div
-            className="space-y-6"
+            className="space-y-6 w-full"
             variants={itemVariants}
           >
             {/* Upload Zone */}
             <motion.div
               {...getRootProps()}
-              className={`relative bg-white/5 backdrop-blur-xl border-2 border-dashed rounded-3xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-500 overflow-hidden ${
+              className={`relative bg-white/5 backdrop-blur-xl border-2 border-dashed rounded-3xl p-6 sm:p-8 lg:p-12 text-center cursor-pointer transition-all duration-500 overflow-hidden w-full ${
                 isDragActive
                   ? 'border-purple-400 bg-purple-500/10 scale-[1.02]'
                   : 'border-white/20 hover:border-white/40 hover:bg-white/10'
@@ -296,7 +296,7 @@ const ImageUploader = () => {
             <AnimatePresence>
               {image && (
                 <motion.div
-                  className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10"
+                  className="bg-white/5 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-white/10 w-full max-w-full"
                   variants={cardVariants}
                   initial="hidden"
                   animate="visible"
@@ -321,16 +321,18 @@ const ImageUploader = () => {
                   </div>
                   
                   <motion.div
-                    className="relative group"
+                    className="relative group w-full"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <img
-                      src={image.preview}
-                      alt="Preview"
-                      className="w-full h-64 sm:h-72 object-contain bg-black/20 rounded-2xl border border-white/10 group-hover:scale-[1.02] transition-transform duration-300"
-                    />
+                    <div className="w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+                      <img
+                        src={image.preview}
+                        alt="Preview"
+                        className="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                      />
+                    </div>
                     <div className="mt-4 p-3 bg-white/5 rounded-xl border border-white/10">
                       <p className="text-sm text-gray-300 truncate font-medium">
                         📁 {image.name}
@@ -341,7 +343,7 @@ const ImageUploader = () => {
                   <motion.button
                     onClick={extractText}
                     disabled={isProcessing}
-                    className="w-full mt-6 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:from-gray-600 disabled:to-gray-700 text-white font-semibold py-4 px-6 rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 border border-white/20"
+                    className="w-full mt-4 sm:mt-6 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:from-gray-600 disabled:to-gray-700 text-white font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 border border-white/20 text-sm sm:text-base"
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -368,7 +370,7 @@ const ImageUploader = () => {
 
           {/* Results Section */}
           <motion.div
-            className="space-y-6"
+            className="space-y-6 w-full"
             variants={itemVariants}
           >
             {/* Error Display */}
@@ -394,7 +396,7 @@ const ImageUploader = () => {
             <AnimatePresence>
               {extractedText && (
                 <motion.div
-                  className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10"
+                  className="bg-white/5 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-white/10 w-full max-w-full"
                   variants={cardVariants}
                   initial="hidden"
                   animate="visible"
@@ -431,12 +433,12 @@ const ImageUploader = () => {
                   </div>
                   
                   <motion.div
-                    className="bg-black/20 rounded-2xl p-4 max-h-96 overflow-y-auto border border-white/10 backdrop-blur-sm"
+                    className="bg-black/20 rounded-2xl p-3 sm:p-4 max-h-64 sm:max-h-80 lg:max-h-96 overflow-y-auto border border-white/10 backdrop-blur-sm w-full"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
                   >
-                    <pre className="whitespace-pre-wrap text-sm text-gray-100 font-mono leading-relaxed">
+                    <pre className="whitespace-pre-wrap text-xs sm:text-sm text-gray-100 font-mono leading-relaxed break-words">
                       {extractedText}
                     </pre>
                   </motion.div>
@@ -457,7 +459,7 @@ const ImageUploader = () => {
             {/* Empty State */}
             {!extractedText && !error && (
               <motion.div
-                className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10"
+                className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/10 w-full max-w-full"
                 variants={cardVariants}
                 whileHover={{ y: -2 }}
               >
