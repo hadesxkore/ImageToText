@@ -1,0 +1,19 @@
+{
+  "name": "Image to Text Converter",
+  "short_name": "ImageToText",
+  "description": "Convert images to text using OCR technology",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "screenshots": []
+} 
